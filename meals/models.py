@@ -18,6 +18,9 @@ class Funcionario(Pessoa):
 
     funcao = models.CharField(max_length=2, choices=Funcao.choices)
 
+    def __str__(self):
+        return f'{self.nome} [{self.funcao}]'
+
 class Estudante(Pessoa):
     ra = models.IntegerField()
 
@@ -32,9 +35,16 @@ class Estudante(Pessoa):
 
     curso = models.CharField(max_length=2, choices=Curso.choices)
 
+    def __str__(self):
+        return f'{self.nome} [RA: {self.ra}] [{self.curso}]'
+
 class ItemEstoque(models.Model):
     nome = models.CharField(max_length=50)
     peso_gramas = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.nome} [{self.peso_gramas} g]'
+
     
 class Cardapio(models.Model):
     prato_principal = models.ForeignKey(ItemEstoque, on_delete=models.CASCADE, related_name='prato_principal')
@@ -42,6 +52,9 @@ class Cardapio(models.Model):
     sobremesa = models.ForeignKey(ItemEstoque, on_delete=models.CASCADE)
 
     nutricionista = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.prato_principal}-{self.acompanhamento}-{self.sobremesa}'
 
 class Refeicao(models.Model):
     estudante = models.ManyToManyField(Estudante)
@@ -53,3 +66,6 @@ class Refeicao(models.Model):
         JANTAR = 'J', _('Jantar')
 
     periodo = models.CharField(max_length=1, choices=Periodo.choices)
+
+    def __str__(self):
+        return f'Refeição [{self.data}] > {self.cardapio}'
