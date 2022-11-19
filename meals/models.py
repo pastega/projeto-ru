@@ -67,5 +67,16 @@ class Refeicao(models.Model):
 
     periodo = models.CharField(max_length=1, choices=Periodo.choices)
 
+    class DiaDaSemana(models.TextChoices):
+        SEGUNDA = 'SEG', _('Segunda-feira')
+        TERCA = 'TER', _('Terça-feira')
+        QUARTA = 'QUA', _('Quarta-feira')
+        QUINTA = 'QUI', _('Quinta-feira')
+        SEXTA = 'SEX', _('Sexta-feira')
+        SABADO = 'SAB', _('Sábado')
+        DOMINGO = 'DOM', _('Domingo')
+
+    dia_da_semana = models.CharField(max_length=3, choices=DiaDaSemana.choices)
+
     def __str__(self):
         return f'Refeição [{self.data}] > {self.cardapio}'
