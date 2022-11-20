@@ -3,5 +3,26 @@
 {% block title %}Cardapio{% endblock title %}
 
 {% block content %}
-    Teste cardapio
+    <form class = "container mt-5">
+        <div class = "form-group ">
+            <label for='PratoPrincipal'>Prato principal:</label>
+            <input type="text" class="form-control" id="PratoPrincipal"  placeholder="Prato Principal">
+        </div>
+
+        <div class = "form-group mt-2">
+            <label for='Acompanhamento'>Acompanhamento:</label>
+            <input type="text" class="form-control" id="Acompanhamento"  placeholder="Acompanhamento">
+        </div>
+        <div class = "form-group mt-2">
+            <label for='Sobremesa'>Sobremesa:</label>
+            <input type="text" class="form-control" id="Sobremesa"  placeholder="Sobremesa">
+        </div>
+
+        <div class = "form-group mt-2">
+            <label for='data'>Data:</label>
+            <input type="date" class="form-control" id="data">
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Cadastrar Cardápio</button>
+    </form>
 {% endblock content %}
