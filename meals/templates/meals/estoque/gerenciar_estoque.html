@@ -3,5 +3,37 @@
 {% block title %}Estoque{% endblock title %}
 
 {% block content %}
-    Teste estoque
+<form class = "container mt-5">
+    <div class = "form-group ">
+        <label for='alimento'>Alimento:</label>
+        <input type="text" class="form-control" id="alimento"  placeholder="Digte o alimento que deseja casdastrar">
+    </div>
+
+    <div class = "form-group mt-2">
+        <label for='peso'>Peso:</label>
+        <input type="text" class="form-control" id="peso"  placeholder="Digite o peso do alimento a ser cadastrado">
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Adicionar ao estoque</button>
+</form>
+
+<table class="table table-dark container">
+    <h1 class ='container' style="text-align: center; background-color:rgb(33, 37, 41); color:white; margin-top: 30px;margin-bottom: 0">Cardápio</h1>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Alimento</th>
+        <th scope="col">Peso</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>AlimentoEx</td>
+        <td>PesoEx</td>
+      </tr>
+    </tbody>
+  </table>
+
 {% endblock content %}
