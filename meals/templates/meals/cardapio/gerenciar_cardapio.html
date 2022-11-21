@@ -3,6 +3,7 @@
 {% block title %}Cardapio{% endblock title %}
 
 {% block content %}
+
     <form class = "container mt-5">
         <div class = "form-group ">
             <label for='PratoPrincipal'>Prato principal:</label>
@@ -25,4 +26,24 @@
 
         <button type="submit" class="btn btn-primary mt-3">Cadastrar Cardápio</button>
     </form>
+    <div class='d-flex p-2 container'>
+    {% for obj in object_list %}
+        <a href="#" class="card  mt-5" style="width: 18rem; margin-left:1rem">
+            <div class='card-header text-dark'>
+                Cardápio
+            </div>
+            <div class = 'card-body'>
+                <h5 class='card-title text-dark' style="text-decoration: none">{{obj.data}}</h5>
+
+                {% if obj.periodo == "A" %}
+                <p class="card-text text-dark">Almoço<p>
+                {% endif %}
+                {% if obj.periodo == "J" %}
+                <p class="card-text text-dark">Janta<p>
+                {% endif %}
+            </div>
+        </a>
+    {% endfor %}
+    </div>
+
 {% endblock content %}
