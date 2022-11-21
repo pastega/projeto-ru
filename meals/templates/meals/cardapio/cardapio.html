@@ -3,9 +3,10 @@
 {% block title %}Cardapio{% endblock title %}
 
 {% block content %}
+<h1>{{now}} {{limit}}</h1> 
 
 <table class="table table-dark container">
-        <h1 class ='container' style="text-align: center; background-color:rgb(33, 37, 41); color:white; margin-top: 15px;margin-bottom: 0">Cardápio</h1>
+        <h1 class ='container' style="text-align: center; background-color:rgb(33, 37, 41); color:white; margin-top: 15px;margin-bottom: 0">Cardápio- Almoço</h1>
         <thead>
           <tr>
             <th scope="col">Dias da Semana</th>
@@ -18,30 +19,154 @@
         <tbody>
           <tr>
             <th scope="row">Segunda</th>
-            
+              {% for obj in object_list %}
+                {% if obj.dia_da_semana == 'SEG' and obj.data >= now and obj.periodo == 'A'%}
+                
+                <td>{{obj.cardapio.prato_principal.nome}}</td>
+                <td>{{obj.cardapio.acompanhamento.nome}}</td>
+                <td>{{obj.cardapio.sobremesa.nome}}</td>
+                {% endif %}
+              {% endfor %}
           </tr>
           <tr>
             <th scope="row">Terça</th>
-           
+            {% for obj in object_list %}
+            {% if obj.dia_da_semana == 'TER' and obj.data == now and obj.periodo == 'A'%}
+            
+            <td>{{obj.cardapio.prato_principal.nome}}</td>
+            <td>{{obj.cardapio.acompanhamento.nome}}</td>
+            <td>{{obj.cardapio.sobremesa.nome}}</td>
+            {% endif %}
+          {% endfor %}
           </tr>
           <tr>
             <th scope="row">Quarta</th>
-            
+            {% for obj in object_list %}
+                {% if obj.dia_da_semana == 'QUA' and obj.data == now and obj.periodo == 'A'%}
+                
+                <td>{{obj.cardapio.prato_principal.nome}}</td>
+                <td>{{obj.cardapio.acompanhamento.nome}}</td>
+                <td>{{obj.cardapio.sobremesa.nome}}</td>
+                {% endif %}
+              {% endfor %}
           </tr>
           <tr>
             <th scope="row">Quinta</th>
-            
+            {% for obj in object_list %}
+                {% if obj.dia_da_semana == 'QUI' and obj.data == now and obj.periodo == 'A'%}
+                
+                <td>{{obj.cardapio.prato_principal.nome}}</td>
+                <td>{{obj.cardapio.acompanhamento.nome}}</td>
+                <td>{{obj.cardapio.sobremesa.nome}}</td>
+                {% endif %}
+              {% endfor %}
             
           </tr>
           <tr>
             <th scope="row">Sexta</th>
-            
+            {% for obj in object_list %}
+                {% if obj.dia_da_semana == 'SEX' and obj.data == now and obj.periodo == 'A'%}
+                
+                <td>{{obj.cardapio.prato_principal.nome}}</td>
+                <td>{{obj.cardapio.acompanhamento.nome}}</td>
+                <td>{{obj.cardapio.sobremesa.nome}}</td>
+                {% endif %}
+              {% endfor %}
           </tr>
           <tr>
             <th scope="row">Sábado</th>
-            
+            {% for obj in object_list %}
+                {% if obj.dia_da_semana == 'SAB' and obj.data == now and obj.periodo == 'A'%}
+                
+                <td>{{obj.cardapio.prato_principal.nome}}</td>
+                <td>{{obj.cardapio.acompanhamento.nome}}</td>
+                <td>{{obj.cardapio.sobremesa.nome}}</td>
+                {% endif %}
+              {% endfor %}
           </tr>
         </tbody>
+</table>
+
+<table class="table table-dark container">
+  <h1 class ='container' style="text-align: center; background-color:rgb(33, 37, 41); color:white; margin-top: 15px;margin-bottom: 0">Cardápio - Jantar</h1>
+  <thead>
+    <tr>
+      <th scope="col">Dias da Semana</th>
+      <th scope="col">Prato Principal</th>
+      <th scope="col">Acompanhamento</th>
+      <th scope="col">Sobremesa</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Segunda</th>
+        {% for obj in object_list %}
+          {% if obj.dia_da_semana == 'SEG' and obj.data == now and obj.periodo == 'J'%}
+          
+          <td>{{obj.cardapio.prato_principal.nome}}</td>
+          <td>{{obj.cardapio.acompanhamento.nome}}</td>
+          <td>{{obj.cardapio.sobremesa.nome}}</td>
+          {% endif %}
+        {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">Terça</th>
+      {% for obj in object_list %}
+      {% if obj.dia_da_semana == 'TER' and obj.data == now and obj.periodo == 'J'%}
+      
+      <td>{{obj.cardapio.prato_principal.nome}}</td>
+      <td>{{obj.cardapio.acompanhamento.nome}}</td>
+      <td>{{obj.cardapio.sobremesa.nome}}</td>
+      {% endif %}
+    {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">Quarta</th>
+      {% for obj in object_list %}
+          {% if obj.dia_da_semana == 'QUA' and obj.data == now and obj.periodo == 'J'%}
+          
+          <td>{{obj.cardapio.prato_principal.nome}}</td>
+          <td>{{obj.cardapio.acompanhamento.nome}}</td>
+          <td>{{obj.cardapio.sobremesa.nome}}</td>
+          {% endif %}
+        {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">Quinta</th>
+      {% for obj in object_list %}
+          {% if obj.dia_da_semana == 'QUI' and obj.data == now and obj.periodo == 'J'%}
+          
+          <td>{{obj.cardapio.prato_principal.nome}}</td>
+          <td>{{obj.cardapio.acompanhamento.nome}}</td>
+          <td>{{obj.cardapio.sobremesa.nome}}</td>
+          {% endif %}
+        {% endfor %}
+      
+    </tr>
+    <tr>
+      <th scope="row">Sexta</th>
+      {% for obj in object_list %}
+          {% if obj.dia_da_semana == 'SEX' and obj.data == now and obj.periodo == 'J'%}
+          
+          <td>{{obj.cardapio.prato_principal.nome}}</td>
+          <td>{{obj.cardapio.acompanhamento.nome}}</td>
+          <td>{{obj.cardapio.sobremesa.nome}}</td>
+          {% endif %}
+        {% endfor %}
+    </tr>
+    <tr>
+      <th scope="row">Sábado</th>
+      {% for obj in object_list %}
+          {% if obj.dia_da_semana == 'SAB' and obj.data == now and obj.periodo == 'J'%}
+          
+          <td>{{obj.cardapio.prato_principal.nome}}</td>
+          <td>{{obj.cardapio.acompanhamento.nome}}</td>
+          <td>{{obj.cardapio.sobremesa.nome}}</td>
+          {% endif %}
+        {% endfor %}
+    </tr>
+  </tbody>
 </table>
 
 {% endblock content %}

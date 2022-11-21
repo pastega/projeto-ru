@@ -76,7 +76,7 @@ class Refeicao(models.Model):
         SABADO = 'SAB', _('Sábado')
         DOMINGO = 'DOM', _('Domingo')
 
-    dia_da_semana = models.CharField(max_length=3, choices=DiaDaSemana.choices)
+    dia_da_semana = models.CharField(max_length=3, choices=DiaDaSemana.choices, default="SEG")
 
     def __str__(self):
         return f'Refeição [{self.data}] > {self.cardapio}'
