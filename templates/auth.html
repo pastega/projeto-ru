@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Autenticação{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+
+    {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            {{ error_message }}
+        </div>
+    {% endif %}
+
+    <h1 class="text-center fs-3 mt-3">Bem-vindo</h1>
+    <form action="" method="POST" class="p-5 mt-2 d-flex flex-column">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Entrar</button>
+    </form>
+</div>
+
+{% endblock content %}
+

@@ -15,7 +15,7 @@ def home_view(request):
     context = {}
     return render(request, 'meals/gerenciar_alunos/home.html', context)
 
-class CardapioView(ListView, LoginRequiredMixin):
+class CardapioView(LoginRequiredMixin, ListView):
     model = Refeicao
     template_name = 'meals/cardapio/cardapio.html'
     def get_context_data(self, **kwargs):
@@ -26,7 +26,7 @@ class CardapioView(ListView, LoginRequiredMixin):
 # def cardapio_view(request):
 #     return render(request, 'meals/cardapio/cardapio.html', {})
 
-class GerenciarCardapioView(ListView, LoginRequiredMixin):
+class GerenciarCardapioView(LoginRequiredMixin, ListView):
     model = Refeicao
     template_name = 'meals/cardapio/gerenciar_cardapio.html'
 
