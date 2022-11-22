@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}Autenticação{% endblock title %}
 
 {% block content %}
 
-<div class="container">
+    <div class="container p-3" style="max-width: 50%">
 
     {% if error_message %}
         <div class="alert alert-danger" role="alert">
@@ -13,12 +14,13 @@
     {% endif %}
 
     <h1 class="text-center fs-3 mt-3">Bem-vindo</h1>
-    <form action="" method="POST" class="p-5 mt-2 d-flex flex-column">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Entrar</button>
-    </form>
-</div>
+    <h2 class="text-center fs-5 mt-3">Faça login para acessar o sistema</h2>
+            <form action="" method="POST" class="p-5 mt-2 d-flex flex-column">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary mt-3">Entrar</button>
+            </form>
+    </div>
 
 {% endblock content %}
 
