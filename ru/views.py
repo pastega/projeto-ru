@@ -26,9 +26,9 @@ def login_view(request):
             else:
                 error_message = 'Algo deu errado! :('
 
-    context = {'form': 'form', 'error_message': error_message}
+    context = {'form': form, 'error_message': error_message}
 
-    #return render(request, 'auth/login.html', context)
+    return render(request, 'auth.html', context)
 
 def logout_view(request):
     logout(request)

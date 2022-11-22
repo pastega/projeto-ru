@@ -57,7 +57,7 @@ class Cardapio(models.Model):
         return f'{self.prato_principal}-{self.acompanhamento}-{self.sobremesa}'
 
 class Refeicao(models.Model):
-    estudante = models.ManyToManyField(Estudante)
+    estudante = models.ManyToManyField(Estudante, blank=True)
     cardapio = models.ForeignKey(Cardapio, on_delete=models.CASCADE)
     data = models.DateField()
 
