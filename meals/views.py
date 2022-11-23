@@ -1,4 +1,3 @@
-from datetime import date, timedelta
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -7,6 +6,7 @@ from django.views.generic import ListView
 from django.shortcuts import render
 
 from .models import Refeicao
+from .utils import convert_list_dict
 
 # Create your views here.
 
@@ -20,11 +20,11 @@ class CardapioView(LoginRequiredMixin, ListView):
     template_name = 'meals/cardapio/cardapio.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context = {'now': date.today(), 'limit':date.today()+timedelta(7)}
+        dates = convert_list_dict()
+        for key in dates:
+            context[f'{key}'] = dates[key]
         return context
-# @login_required
-# def cardapio_view(request):
-#     return render(request, 'meals/cardapio/cardapio.html', {})
+
 
 class GerenciarCardapioView(LoginRequiredMixin, ListView):
     model = Refeicao
