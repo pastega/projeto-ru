@@ -5,17 +5,13 @@
 {% block content %}
 
 <div class ='container mt-5'>
-  <form>
-
+  <form method="post">
+      {% csrf_token %}
       <div class="form-group">
         <label for="RA">RA:</label>
         <input type="number" class="form-control" id="RA" placeholder="0000000">
       </div>
 
-      <div class="form-group">
-          <label for="Nome">Nome:</label>
-          <input type="Username" class="form-control" id="Nome" placeholder="John Doe">
-        </div>
         <br>
         <button class="btn btn-primary" type="submit">Enviar</button>
   </form>
