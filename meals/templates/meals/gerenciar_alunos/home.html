@@ -1,24 +1,26 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}Home{% endblock title %}
 
 {% block content %}
 
-<div class ='container mt-5'>
-  <form>
+<div class="container mt-5">
 
-      <div class="form-group">
-        <label for="RA">RA:</label>
-        <input type="number" class="form-control" id="RA" placeholder="0000000">
-      </div>
-
-      <div class="form-group">
-          <label for="Nome">Nome:</label>
-          <input type="Username" class="form-control" id="Nome" placeholder="John Doe">
-        </div>
-        <br>
+  <div class="container w-50">
+    <form method="POST" class="d-flex flex-column">
+        {% csrf_token %}
+        {{ form|crispy }}
         <button class="btn btn-primary" type="submit">Enviar</button>
-  </form>
+    </form>
+
+    {% if status == 1 %}
+      <div class="alert alert-danger mt-4 text-center" role="alert">
+        ERRO: O estudante já foi registrado na refeição atual
+      </div>
+    {% endif %}
+  </div>
+
 </div>
   
     
