@@ -17,10 +17,12 @@ from datetime import date
 def home_view(request):
 
     form = RAForm()
-    status = 0 
+    error = None
 
     if request.method == 'POST':
         form = RAForm(request.POST)
+
+        # TODO: Handle errors in a better way
 
         if form.is_valid():
             ra = form.cleaned_data['ra']
@@ -28,20 +30,20 @@ def home_view(request):
             periodo = get_current_periodo()
 
             qs_refeicao_atual = Refeicao.objects.filter(data=data, periodo=periodo)
+            if not qs_refeicao_atual:
+                error = 'ERRO: Não há nenhuma refeição vigente atualmente'
+
             qs_estudante_refeicao = qs_refeicao_atual.filter(estudante__ra=ra)
         
             if qs_estudante_refeicao.exists():
-                status = 1
+                error = 'ERRO: O estudante já foi registrado na refeição atual'
 
             estudante = Estudante.objects.filter(ra=ra)[0]
             
             refeicao = qs_refeicao_atual[0]
             refeicao.estudante.add(estudante)
-            
-    # status = 0 significa que o estudante NÃO está registrado na refeição atual
-    # status = 1 significa que o estudante já está registrado na refeição atual
 
-    context = {'form': form, 'status': status}
+    context = {'form': form, 'error': error}
     return render(request, 'meals/gerenciar_alunos/home.html', context)
 
 class CardapioView(LoginRequiredMixin, ListView):

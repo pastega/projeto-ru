@@ -14,9 +14,9 @@
         <button class="btn btn-primary" type="submit">Enviar</button>
     </form>
 
-    {% if status == 1 %}
+    {% if error %}
       <div class="alert alert-danger mt-4 text-center" role="alert">
-        ERRO: O estudante já foi registrado na refeição atual
+        {{ error }}
       </div>
     {% endif %}
   </div>
