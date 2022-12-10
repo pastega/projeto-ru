@@ -8,6 +8,7 @@ class Pessoa(models.Model):
 
     class Meta:
         abstract = True
+        verbose_name_plural = 'Pessoas'
 
 class Funcionario(Pessoa):
 
@@ -20,6 +21,9 @@ class Funcionario(Pessoa):
 
     def __str__(self):
         return f'{self.nome} [{self.funcao}]'
+
+    class Meta:
+        verbose_name_plural = 'Funcionários'
 
 class Estudante(Pessoa):
     ra = models.IntegerField()
@@ -38,6 +42,9 @@ class Estudante(Pessoa):
     def __str__(self):
         return f'{self.nome} [RA: {self.ra}] [{self.curso}]'
 
+    class Meta:
+        verbose_name_plural = 'Estudantes'
+
 class ItemEstoque(models.Model):
     nome = models.CharField(max_length=50)
     peso_gramas = models.IntegerField()
@@ -45,6 +52,8 @@ class ItemEstoque(models.Model):
     def __str__(self):
         return f'{self.nome} [{self.peso_gramas} g]'
 
+    class Meta:
+        verbose_name_plural = 'Itens no Estoque'
     
 class Cardapio(models.Model):
     prato_principal = models.ForeignKey(ItemEstoque, on_delete=models.CASCADE, related_name='prato_principal')
@@ -55,6 +64,9 @@ class Cardapio(models.Model):
 
     def __str__(self):
         return f'{self.prato_principal}-{self.acompanhamento}-{self.sobremesa}'
+
+    class Meta:
+        verbose_name_plural = 'Cardápios'
 
 class Refeicao(models.Model):
     estudante = models.ManyToManyField(Estudante, blank=True)
@@ -70,3 +82,6 @@ class Refeicao(models.Model):
 
     def __str__(self):
         return f'Refeição [{self.data}] > {self.cardapio}'
+    
+    class Meta:
+        verbose_name_plural = 'Refeições'
